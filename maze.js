@@ -1,4 +1,4 @@
-var lose = 0;
+var lose = null;
  
 window.onload = function() {
     $("start").onclick = start;
@@ -12,7 +12,7 @@ window.onload = function() {
 
 
 function passboundaries() {
-    if (lose === 1) {
+    if (lose === false) {
         lose = true;
         $("status").textContent = "Better luck next time!";
         var boundaries = $$("div#maze div.boundary");
@@ -24,14 +24,14 @@ function passboundaries() {
 
 
 function starting() {
-    if(lose === 0) {
-        lose = 1;
+    if(lose === null) {
+        lose = false;
         $("status").textContent = "Good Luck!";
     }
 }
  
 function start() {
-    lose = 1;
+    lose = false;
     $("status").textContent = "Good Luck!";
     
     var boundaries = $$("div#maze div.boundary");
@@ -41,9 +41,9 @@ function start() {
 }
  
 function end() {
-    if(lose === 1) {
+    if(lose === false) {
         $("status").textContent = "Congratulations!";
-        lose = 0;
+        lose = null;
     }
 }
  
