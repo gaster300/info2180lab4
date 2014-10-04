@@ -13,7 +13,7 @@ window.onload = function() {
 
 function passboundaries() {
     if (lose === 1) {
-        lose = 2;
+        lose = true;
         $("status").textContent = "Better luck next time!";
         var boundaries = $$("div#maze div.boundary");
         for (var x = 0; x < boundaries.length; i++) {
