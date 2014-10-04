@@ -5,7 +5,7 @@ window.onload = function() {
     $("start").onmouseover = starting;
     $("end").onmouseover = end;
     var boundaries = $$("div#maze div.boundary");
-    for (var g = null; g < boundaries.length; i++) {
+    for (var g = 0; g < boundaries.length; i++) {
         boundaries[g].onmouseover = passboundaries;
     }
 };
@@ -16,7 +16,7 @@ function passboundaries() {
         lose = true;
         $("status").textContent = "Better luck next time!";
         var boundaries = $$("div#maze div.boundary");
-        for (var x = null; x < boundaries.length; i++) {
+        for (var x = 0; x < boundaries.length; i++) {
             boundaries[x].addClassName("youlose");
         }
     }
@@ -35,7 +35,7 @@ function start() {
     $("status").textContent = "Good Luck!";
     
     var boundaries = $$("div#maze div.boundary");
-    for (var a = null; a < boundaries.length; i++) {
+    for (var a = 0; a < boundaries.length; i++) {
         boundaries[a].removeClassName("youlose");
     }
 }
