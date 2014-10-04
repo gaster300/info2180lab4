@@ -1,46 +1,49 @@
-var loser = null;
+var lose = 0;
  
 window.onload = function() {
     $("start").onclick = start;
-    $("start").onmouseover = startHover;
+    $("start").onmouseover = starting;
     $("end").onmouseover = end;
     var boundaries = $$("div#maze div.boundary");
-    for (var i = 0; i < boundaries.length; i++) {
-        boundaries[i].onmouseover = boundaryHandler;
+    for (var g = 0; g < boundaries.length; i++) {
+        boundaries[i].onmouseover = passboundaries;
     }
 };
- 
-function startHover() {
-    if(loser === null) {
-        loser = false;
-        $("status").textContent = "Find the end!";
+
+
+function passboundaries() {
+    if (lose === 1) {
+        lose = 2;
+        $("status").textContent = "Better luck next time!";
+        var boundaries = $$("div#maze div.boundary");
+        for (var x = 0; x < boundaries.length; i++) {
+            boundaries[i].addClassName("youlose");
+        }
+    }
+}
+
+
+function starting() {
+    if(lose === 0) {
+        lose = 1;
+        $("status").textContent = "Good Luck!";
     }
 }
  
 function start() {
-    loser = false;
-    $("status").textContent = "Find the end!";
+    lose = 1;
+    $("status").textContent = "Good Luck!";
     
     var boundaries = $$("div#maze div.boundary");
-    for (var i = 0; i < boundaries.length; i++) {
+    for (var a = 0; a < boundaries.length; i++) {
         boundaries[i].removeClassName("youlose");
     }
 }
  
 function end() {
-    if(loser === false) {
-        $("status").textContent = "You win!";
-        loser = null;
+    if(lose === 1) {
+        $("status").textContent = "Congratulations!";
+        lose = 0;
     }
 }
  
-function boundaryHandler() {
-    if (loser === false) {
-        loser = true;
-        $("status").textContent = "You lose!";
-        var boundaries = $$("div#maze div.boundary");
-        for (var i = 0; i < boundaries.length; i++) {
-            boundaries[i].addClassName("youlose");
-        }
-    }
-}
