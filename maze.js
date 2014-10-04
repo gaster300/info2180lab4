@@ -20,13 +20,6 @@ function passboundaries() {
             boundaries[x].addClassName("youlose");
         }
     }
-    elseif(maze.onmouseout){
-        lose = 2;
-        $("status").textContent = "Better luck next time!";
-        var boundaries = $$("div#maze div.boundary");
-        for (var x = 0; x < boundaries.length; x++) {
-            boundaries[x].addClassName("youlose");}
-    }
 }
 
 
